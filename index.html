@@ -12,8 +12,12 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.4.1.min.js"></script>
     <script>
         $(function(){
-            $("header").load("/component/header.html",function(){
-                $("nav .navbar-nav .symposium a").addClass("active");
+            $.ajax({
+                url: '/component/navigation.html',
+                success: function(data) {
+                    $("header").prepend(data);
+                    $("nav .navbar-nav .symposium a").addClass("active");
+                }
             });
             $("footer").load("/component/footer.html");
             
@@ -560,5 +564,11 @@
         </div> 
     </main>
     
+    <footer></footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous">
+    </script>
 </body>
 </html>
